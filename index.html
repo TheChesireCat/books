@@ -11,17 +11,20 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11/styles/github.min.css" />
 </head>
 <body class="bg-gray-100 flex flex-col items-center min-h-screen">
-  <div class="w-full max-w-3xl mx-4 bg-white p-6 shadow-md rounded-md">
+  <!-- Main landmark -->
+  <main class="w-full max-w-3xl mx-4 bg-white p-6 shadow-md rounded-md">
     <!-- Dropdown to select markdown file -->
     <div class="mb-4">
       <label for="md-select" class="block text-gray-700 font-semibold mb-2">Select a Markdown file:</label>
-      <select id="md-select" class="w-full p-2 border rounded">
+      <select id="md-select" class="w-full p-2 border rounded" aria-label="Select a Markdown file">
         <option value="">Loading...</option>
       </select>
     </div>
     <!-- Markdown display -->
-    <zero-md id="markdown-viewer" src=""></zero-md>
-  </div>
+    <article>
+      <zero-md id="markdown-viewer" src="" aria-live="polite" aria-busy="true"></zero-md>
+    </article>
+  </main>
 
   <script>
     const repoOwner = 'TheChesireCat'; // Replace with your GitHub username
@@ -52,16 +55,19 @@
         if (markdownFiles.length > 0) {
           mdSelect.value = markdownFiles[0].download_url;
           markdownViewer.setAttribute('src', markdownFiles[0].download_url);
+          markdownViewer.setAttribute('aria-busy', 'false');
         }
       } catch (error) {
         console.error('Error fetching Markdown files:', error);
         mdSelect.innerHTML = '<option value="">Error loading files</option>';
+        markdownViewer.setAttribute('aria-busy', 'false');
       }
     }
 
     // Update zero-md src when a file is selected
     mdSelect.addEventListener('change', (event) => {
       markdownViewer.setAttribute('src', event.target.value);
+      markdownViewer.setAttribute('aria-busy', 'true');
     });
 
     // Initialize
