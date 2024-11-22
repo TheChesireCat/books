@@ -1,6 +1,6 @@
-# Kit the Kat's Books
+# My Books
 
-Welcome to **Kit the Kat's Books**, a cozy corner to explore snippets, summaries, and musings from books that I love or plan to read.
+Welcome to **My Books**, a corner to explore snippets, summaries, and musings from books that I love or plan to read.
 
 ## Features
 
@@ -14,5 +14,3 @@ Welcome to **Kit the Kat's Books**, a cozy corner to explore snippets, summaries
 2. The selected book’s content will appear below instantly for your reading pleasure.
 
 ---
-
-Curl up, relax, and enjoy the magic of words!
