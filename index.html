@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Markdown Viewer</title>
   <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
   <!-- Import md-block -->
   <script type="module" src="https://md-block.verou.me/md-block.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11/styles/github.min.css" />
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11/styles/github.min.css" /> -->
 </head>
 <body class="bg-gray-100 flex flex-col items-center min-h-screen">
   <!-- Main landmark -->
@@ -24,9 +24,15 @@
     <div id="raw-file-link" class="mb-4 text-blue-500 hover:underline">
       <a href="#" target="_blank" id="raw-link" class="hidden">View Raw File</a>
     </div>
+
+    <!-- feeds.html here  -->
+    <!-- <div id="feeds" class="mb-4 text-blue-500 hover:underline">
+        <a href="feeds.html">Feeds</a>
+    </div> -->
+
     <!-- Markdown display -->
     <article>
-      <md-block id="markdown-viewer" class="prose lg:prose-xl"></md-block>
+      <md-block id="markdown-viewer" class="prose prose-img:rounded-xl prose-headings:underline prose-a:text-blue-600"></md-block>
     </article>
   </main>
 

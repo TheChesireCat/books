@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feed Viewer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    
+  </head>
+  <body class="bg-gray-100 flex flex-col items-center min-h-screen">
+    <!-- Main landmark -->
+    <main class="w-full max-w-3xl mx-4 bg-white p-6 shadow-md rounded-md space-y-4">
+      <h1 class="text-2xl font-bold mb-4">RSS Feeds</h1>
+      <div id="feed-container" class="prose space-y-4">
+        <!-- RSS feed containers will be appended here -->
+      </div>
+    </main>
+
+    <script>
+      const feeds = [
+        ["Quanta", "https://api.quantamagazine.org/feed/"],
+        ["Noema Magazine", "https://www.noemamag.com/feed/"],
+        ["Aeon", "https://aeon.co/feed"],
+        ["Nautilus", "https://nautil.us/feed/"],
+        ["The Point Magazine", "https://thepointmag.com/feed/"],
+        ["Asterisk Magazine", "https://asteriskmag.com/feed"],
+        ["Symmetry Magazine", "https://www.symmetrymagazine.org/feed"],
+        ["n+1 Magazine", "https://www.nplusonemag.com/feed/"],
+        ["Harpers Magazine", "https://harpers.org/feed/"],
+        ["Low←Tech Magazine", "https://solar.lowtechmagazine.com/feeds/all-en.atom.xml"],
+        ["Public Books Magazine", "http://www.publicbooks.org/feed"],
+        ["The New Atlantis", "https://www.thenewatlantis.com/feed"],
+      ];
+
+      const feedContainer = document.getElementById("feed-container");
+
+      // Create a div for each feed with appropriate data attributes
+      feeds.forEach(([name, url]) => {
+        const feedDiv = document.createElement("div");
+        feedDiv.setAttribute("data-rss-feed", url);
+        feedDiv.setAttribute("data-rss-link-titles", "false");
+        feedDiv.setAttribute("data-rss-title-wrapper", "h3");
+        feedDiv.setAttribute("data-rss-max", "5");
+        feedDiv.classList.add("p-4", "border", "rounded", "bg-gray-50");
+        feedContainer.appendChild(feedDiv);
+      });
+    </script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/110131/simple-rss.js"></script>
+  </body>
+</html>
