@@ -67,18 +67,11 @@
       }
     }
 
-    // Update md-block with the content of the Markdown file
-    async function updateMarkdownViewer(downloadUrl) {
-      try {
-        const response = await fetch(downloadUrl);
-        if (!response.ok) throw new Error('Failed to fetch Markdown content');
-        const markdownContent = await response.text();
-        markdownViewer.textContent = markdownContent;
-        rawLink.href = downloadUrl;
-        rawLink.classList.remove('hidden');
-      } catch (error) {
-        console.error('Error updating Markdown viewer:', error);
-      }
+    // Update md-block src attribute with the file download URL
+    function updateMarkdownViewer(downloadUrl) {
+      markdownViewer.setAttribute('src', downloadUrl);
+      rawLink.href = downloadUrl;
+      rawLink.classList.remove('hidden');
     }
 
     mdSelect.addEventListener('change', (event) => {
