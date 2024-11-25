@@ -38,7 +38,6 @@
     const markdownViewer = document.getElementById('markdown-viewer');
     const mdSelect = document.getElementById('md-select');
     const rawLink = document.getElementById('raw-link');
-    const rawFileLinkContainer = document.getElementById('raw-file-link');
 
     // Fetch list of Markdown files dynamically
     async function fetchMarkdownFiles() {
@@ -60,7 +59,7 @@
         // Set the first file as default
         if (markdownFiles.length > 0) {
           mdSelect.value = markdownFiles[0].download_url;
-          updateMarkdownViewer(markdownFiles[0].download_url, markdownFiles[0].html_url);
+          updateMarkdownViewer(markdownFiles[0].download_url);
         }
       } catch (error) {
         console.error('Error fetching Markdown files:', error);
@@ -70,17 +69,17 @@
     }
 
     // Update zero-md src and raw file link when a file is selected
-    function updateMarkdownViewer(downloadUrl, rawUrl) {
+    function updateMarkdownViewer(downloadUrl) {
       markdownViewer.setAttribute('src', downloadUrl);
       markdownViewer.setAttribute('aria-busy', 'false');
-      rawLink.href = rawUrl;
+      rawLink.href = downloadUrl;
       rawLink.classList.remove('hidden');
     }
 
     mdSelect.addEventListener('change', (event) => {
-      const selectedOption = event.target.selectedOptions[0];
+      const selectedOption = event.target.value;
       if (selectedOption) {
-        updateMarkdownViewer(selectedOption.value, selectedOption.dataset.rawUrl);
+        updateMarkdownViewer(selectedOption);
       }
     });
 
